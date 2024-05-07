@@ -1,0 +1,35 @@
+Q1:
+let obj1 = { name: "Person 1", age: 5 };
+let obj2 = { age: 5, name: "Person 1" };
+
+function compareJSON(obj1, obj2) {
+    return JSON.stringify(obj1) === JSON.stringify(obj2);
+}
+
+console.log(compareJSON(obj1, obj2)); // Output: true
+
+Q2:
+fetch('https://restcountries.com/v3.1/all')
+  .then(response => response.json())
+  .then(data => {
+    data.forEach(country => {
+      const flag = country.flags.svg;
+      console.log(flag);
+    });
+  })
+  .catch(error => console.log('Error fetching data:', error));
+
+Q3:
+fetch('https://restcountries.com/v3.1/all')
+  .then(response => response.json())
+  .then(data => {
+    data.forEach(country => {
+      const name = country.name.common;
+      const region = country.region;
+      const subRegion = country.subregion;
+      const population = country.population;
+
+      console.log(`Name: ${name}, Region: ${region}, Sub-region: ${subRegion}, Population: ${population}`);
+    });
+  })
+  .catch(error => console.log('Error fetching data:', error));
